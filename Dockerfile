@@ -15,7 +15,7 @@
 # Robert Cowart are Copyright (C)2019 Robert Cowart. All Rights Reserved.
 #------------------------------------------------------------------------------
 
-FROM docker.elastic.co/logstash/logstash-oss:7.3.2
+FROM docker.elastic.co/logstash/logstash-oss:7.5.2
 
 ARG BUILD_DATE
 
@@ -29,7 +29,7 @@ LABEL org.opencontainers.image.created="$BUILD_DATE" \
       org.opencontainers.image.title="ElastiFlow™ - Logstash" \
       org.opencontainers.image.description="Logstash with the ElastiFlow™ pipeline."
 
-ENV ELASTIFLOW_ES_HOST="http://127.0.0.1:9200"
+ENV ELASTIFLOW_ES_HOST="http://elasticsearch:9200"
 
 RUN $HOME/bin/logstash-plugin install logstash-codec-sflow \
     && $HOME/bin/logstash-plugin install --version 10.1.0 logstash-output-elasticsearch \
